@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transmission familiale — simulateur de succession et de donation</title>
+  <meta name="description" content="Simulateur familial : ventes, donations, démembrement, assurance-vie et succession. Chiffrage des impôts et marche à suivre, droit français.">
+  <meta name="theme-color" content="#14493f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314493f'/%3E%3Cpath d='M14 34 32 18l18 16v14H38V38H26v10H14z' fill='%23f6f1e7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <a class="marque" href="#/accueil" aria-label="Accueil">
+      <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><rect width="64" height="64" rx="14" fill="currentColor"/><path d="M14 34 32 18l18 16v14H38V38H26v10H14z" fill="#f6f1e7"/></svg>
+      <span>Transmission familiale</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale" id="nav"></nav>
+  </header>
+
+  <main id="contenu" tabindex="-1"></main>
+
+  <footer class="pied">
+    <p>Outil d'information. Les montants sont des estimations qui ne remplacent pas le conseil d'un notaire ou d'un avocat.
+      Droit français, France métropolitaine, à jour au <span id="date-maj"></span>.</p>
+    <p>Vos données restent dans ce navigateur. Rien n'est envoyé sur internet.</p>
+  </footer>
+
+  <div id="barre-basse"></div>
+  <div id="notification" role="status" aria-live="polite"></div>
+  <input type="file" id="fichier" accept="application/json,.json" hidden>
+
+  <noscript><p style="padding:2rem">Ce simulateur a besoin de JavaScript pour fonctionner.</p></noscript>
+
+  <script src="js/loi.js"></script>
+  <script src="js/calcul.js"></script>
+  <script src="js/exemple.js"></script>
+  <script src="js/guides.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
