@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - claude/succession-tax-simulator-0eft45
   workflow_dispatch:
 
 permissions:
