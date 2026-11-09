@@ -8,10 +8,11 @@ Droit français, France métropolitaine. Site statique, sans serveur ni dépenda
 
 ## Mettre en ligne sur GitHub Pages
 
-1. Dans le dépôt : **Settings → Pages**.
-2. **Source** : « Deploy from a branch ».
-3. **Branch** : choisir la branche qui contient le site, dossier `/ (root)`, puis **Save**.
-4. Après une à deux minutes, le site est à l'adresse `https://<compte>.github.io/fiscplanning/`.
+Le déploiement est automatique à chaque envoi sur la branche, via `.github/workflows/pages.yml` (les tests tournent d'abord).
+
+1. Dans le dépôt : **Settings → Pages → Source** : « GitHub Actions ».
+2. **Settings → Environments → github-pages → Deployment branches and tags** : autoriser la branche qui porte le site (ou choisir « No restriction »).
+3. Le site est à l'adresse `https://<compte>.github.io/fiscplanning/`.
 
 GitHub Pages gratuit demande un dépôt public.
 
