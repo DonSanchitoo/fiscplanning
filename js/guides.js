@@ -262,20 +262,22 @@
     });
 
     res.ventes.filter(function (v) { return v.action === 'vendre_apres_occupation'; }).forEach(function (v) {
+      var bienOccupe = sit.biens.filter(function (x) { return x.id === v.bienId; })[0] || {};
+      var estLoue = bienOccupe.usage === 'loc_nue' || bienOccupe.usage === 'loc_meublee';
       etape({
         id: 'occupation_' + v.bienId,
         titre: 'Emménager réellement dans « ' + esc(v.nom) + ' », puis le vendre',
         quand: 'Après avoir quitté votre résidence principale actuelle. Vente prévue en ' + v.annee,
         qui: 'Vous deux, puis le notaire',
         resume: 'Une résidence secondaire qui devient votre vraie résidence principale peut être vendue sans impôt de plus-value. Enjeu : environ ' + eur(v.enjeu) + ' d\'impôt évité. C\'est légal si l\'occupation est réelle et durable ; c\'est redressé si elle est de façade.',
-        actions: [
+        actions: (estLoue ? ['Le logement est loué : donnez congé au locataire pour reprise, par lettre recommandée, au moins ' + (bienOccupe.usage === 'loc_meublee' ? 'trois mois' : 'six mois') + ' avant la fin du bail. Vous devez réellement venir y habiter.'] : []).concat([
           'Quittez vraiment l\'ancien logement : vendu, ou vidé et mis en vente.',
           'Transférez toute votre vie à la nouvelle adresse : impôts (espace « Gérer mes biens immobiliers » et déclaration de revenus), assurance habitation en résidence principale, employeur, banque, caisses de retraite, sécurité sociale, médecin traitant, listes électorales, carte grise.',
           'Vivez-y normalement : consommations d\'eau et d\'électricité d\'une occupation à l\'année, courrier, abonnements.',
           'Restez-y une durée significative. La loi ne fixe aucun minimum, mais plus c\'est long, plus c\'est solide : visez au moins une année pleine, davantage si possible.',
           'Vendez pendant que vous y habitez encore, ou dans l\'année qui suit votre départ sans l\'avoir loué.',
           'Gardez toutes les preuves pendant au moins quatre ans après la vente : factures, avis d\'impôt, facture de déménagement.'
-        ],
+        ]),
         documents: ['Factures d\'eau, d\'électricité, d\'internet', 'Avis d\'impôt à la nouvelle adresse', 'Attestation d\'assurance habitation en résidence principale', 'Facture de déménagement'],
         cout: 'Aucun impôt si l\'exonération tient. Sinon : environ ' + eur(v.enjeu) + ' d\'impôt, plus intérêts de retard (0,20 % par mois) et majoration de 40 % (manquement délibéré) à 80 % (abus de droit).',
         pieges: [

@@ -339,7 +339,9 @@
   function actionsPour(b) {
     if (b.usage === 'rp') return ['garder', 'vendre', 'donner_np', 'donner_pp'];
     if (b.usage === 'rs') return ['garder', 'vendre', 'vendre_apres_occupation', 'donner_puis_vendre', 'donner_np', 'donner_pp'];
-    return ['garder', 'vendre', 'donner_puis_vendre', 'donner_np', 'donner_pp'];
+    if (b.usage === 'terrain') return ['garder', 'vendre', 'donner_puis_vendre', 'donner_np', 'donner_pp'];
+    // Un logement loué ou vide peut aussi devenir la résidence principale avant d'être vendu
+    return ['garder', 'vendre', 'vendre_apres_occupation', 'donner_puis_vendre', 'donner_np', 'donner_pp'];
   }
 
   var PROTECTIONS = {
